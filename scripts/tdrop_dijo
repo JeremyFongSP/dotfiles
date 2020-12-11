@@ -1,0 +1,14 @@
+#!/bin/bash
+
+xoffset=10
+yoffset=50
+width=900
+height=600
+
+if [ ! -f ~/.config/polybar/.dijo_state ]; then
+    echo 1 > ~/.config/polybar/.dijo_state;
+    tdrop -a -w $width -h $height -x $xoffset -y $yoffset -f "-name dijo -e sh -c 'dijo'" urxvt &>/dev/null;
+else
+    rm ~/.config/polybar/.dijo_state;
+    pkill -f dijo;
+fi

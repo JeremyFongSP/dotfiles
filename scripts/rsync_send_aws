@@ -1,0 +1,14 @@
+#!/bin/bash
+
+local_file=$1
+remote_machine=$2
+destination=$3
+ssh_key="ssh -i /home/jeremy/.aws/jeremy-IAM-keypair.pem"
+
+if [ $# -lt 3 ]
+then
+    echo "Send files to AWS"
+    echo "rsync-send [local_file] [remote_machine] [remote_destination]"
+else
+    rsync -ave "$ssh_key" $local_file $remote_machine:$destination
+fi

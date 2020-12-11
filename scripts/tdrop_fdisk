@@ -1,0 +1,15 @@
+#!/bin/bash
+
+xoffset=1090
+yoffset=50
+width=900
+height=820
+
+if [ ! -f ~/.config/polybar/.fdisk_state ]; then
+    echo 1 > ~/.config/polybar/.fdisk_state;
+    tdrop -a -w $width -h $height -x $xoffset -y $yoffset -f "-hold -name fdisk -e sh -c 'fdisk -l'" urxvt &>/dev/null;
+else
+    rm ~/.config/polybar/.fdisk_state;
+    pkill -f fdisk;
+fi
+

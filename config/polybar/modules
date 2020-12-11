@@ -1,0 +1,11 @@
+;[module/title]
+;type = internal/xwindow
+;
+;format = <label>
+;format-background = ${colors.trans-bg}
+;format-foreground = ${xrdb:foreground}
+;
+;label = %title%
+;label-maxlen = 20
+;
+;font-0 = FontAwesome:pixelsize=12;0

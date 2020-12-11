@@ -1,0 +1,24 @@
+#!/bin/bash
+
+local_file=$1
+remote_machine=$2
+destination=$3
+ssh_key="ssh -i /home/jeremy/.aws/jeremy-IAM-keypair.pem"
+
+if [ $# -lt 3 ]
+then
+    echo "Updates the remote files with the local ones"
+    echo "rsync-update [local_file_or_folder] [remote_machine] [remote_destination]"
+else
+    # Dry run
+    rsync -aunve "$ssh_key" $local_file $remote_machine:$destination
+
+    echo "Stage changes? [Y/N]"
+
+    read input
+    answer=$(echo $input | awk '{print toupper($0)}')
+    if [ $answer == 'Y' ]
+    then
+        rsync -auve "$ss_key" $local_file $remote_machine:$destination
+    fi
+fi

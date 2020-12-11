@@ -1,0 +1,14 @@
+#!/bin/bash
+
+remote_machine=$1
+remote_file=$2
+local_directory=$3
+ssh_key="ssh -i /home/jeremy/.aws/jeremy-IAM-keypair.pem"
+
+if [ $# -lt 3 ]
+then
+    echo "Pull files from AWS"
+    echo "rsync-pull [remote_machine] [remote_file_location] [local_directory]"
+else
+    rsync -azhue "$ssh_key" --progress $remote_machine:$remote_file $local_directory
+fi

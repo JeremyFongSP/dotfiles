@@ -1,0 +1,8 @@
+#!/bin/bash
+
+xoffset=0
+yoffset=0
+width=1600
+height=1000
+
+tdrop -a -w $width -h $height -x $xoffset -y $yoffset spotify &>/dev/null;

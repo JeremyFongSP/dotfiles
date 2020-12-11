@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# == 0 ]
+then
+    echo public DNS:
+    read input
+    pub_DNS=$input
+else
+    pub_DNS=$1
+fi
+
+remote_folder='/s3mnt/carla-rl/outputs/ppo_experimental'
+local_folder='/home/jeremy/Insight/Project/outputs'
+
+echo fetching data
+rsync=$(/home/jeremy/.scripts_custom/rsync_pull_aws ubuntu@$pub_DNS $remote_folder $local_folder)
+echo pulled from $remote_folder to $local_folder

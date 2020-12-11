@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+set -u
+
+brightness=$1
+
+pkill redshift
+sleep 5
+xrandr --output eDP-1 --brightness $brightness
+sleep 5
+redshift

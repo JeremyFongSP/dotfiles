@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ps=$(ps -e | grep flashfocus | awk '{print $1}')
+
+# echo killing flash focus
+kill $ps
+
+# refresh compton
+kill $(pidof compton)
+compton --config ~/.c &
+
+# echo restarting flash focus in background
+flashfocus &
+
+exit

@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+MAC_ADDR="17:C9:6B:C8:E6:22"
+
+function is_connected {
+    b_connected=$(bluetoothctl info $MAC_ADDR | awk '/Connected/ {print $2}')
+    if [ $b_connected = 'yes' ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+echo -e 'disconnect 17:C9:6B:C8:E6:22\n' | bluetoothctl
+sleep 5
+echo quit
+exit

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+xoffset=1200
+yoffset=-650
+width=900
+height=600
+
+if ! pgrep nmtui > /dev/null 2>&1; then
+    tdrop -a -w $width -h $height -x $xoffset -y $yoffset -f "-name nmtui -e sh -c 'nmtui'" urxvt &>/dev/null;
+else
+    pkill nmtui;
+fi

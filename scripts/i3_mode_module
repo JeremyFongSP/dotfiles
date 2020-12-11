@@ -1,0 +1,12 @@
+#!/bin/bash
+
+i3-msg -t subscribe -m '[ "mode" ]' |
+jq -r --unbuffered '.change' |
+while read; do
+    if [ "$REPLY" != "default" ]; then
+        echo "$REPLY mode"
+    else
+        echo ""
+    fi
+done
+

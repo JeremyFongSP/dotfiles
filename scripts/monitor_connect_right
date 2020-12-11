@@ -1,0 +1,26 @@
+#!/bin/bash
+
+is_connected=$(xrandr | grep -w 'DP-1' | awk '{print $2}')
+xrandr --auto
+
+if [ $is_connected == 'connected' ]
+then
+    sleep 1
+    xrandr --output DP-1 --right-of eDP-1
+    echo monitor connected
+
+    sleep 2
+
+    # pkill polybar
+
+    # if type "xrandr"; then
+    #   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    #     MONITOR=$m polybar --reload mainbar-i3 &
+    #   done
+    # else
+    #   polybar --reload mainbar-i3 &
+    # fi
+fi
+
+feh --bg-fill /home/jeremy/Pictures/backgrounds/wallpaper24.jpg
+

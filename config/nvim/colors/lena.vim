@@ -78,9 +78,9 @@ hi Keyword         ctermfg=4
 hi Todo            ctermfg=11  ctermbg=NONE     cterm=bold,underline
 hi Urgent          ctermfg=1   ctermbg=NONE     cterm=bold,underline
 hi Done            ctermfg=4   ctermbg=NONE     cterm=bold,underline
-hi Function        ctermfg=6   cterm=bold
-hi Identifier      ctermfg=4   cterm=bold
-hi Statement       ctermfg=11  cterm=bold
+hi Function        ctermfg=14
+hi Identifier      ctermfg=4
+hi Statement       ctermfg=6 cterm=bold
 hi Constant        ctermfg=13
 hi Number          ctermfg=10
 hi Boolean         ctermfg=2
@@ -92,11 +92,27 @@ hi Method          ctermfg=1
 " hi! link Operator  Delimiter
 hi! link Error     ErrorMsg
 hi BadWhitespace   ctermfg=1
-hi link dfunction  Function
-" dfunction in ~/.config/nvim/plugged/python-syntax/syntax/python.vim
-
+hi dFunction       ctermfg=11 cterm=italic
 
 "}}}
+" Python {{{
+hi pythonfunction             ctermfg=11 cterm=bold
+"hi pythonInstance      ctermfg=5
+hi pythonClassVar             ctermfg=4
+hi! link pythonImport         Statement
+hi! link pythonStatement      Statement
+hi pythonConditional          ctermfg=10 cterm=bold
+hi! link pythonRepeat         pythonConditional
+hi pythonException            ctermfg=1 cterm=italic
+hi pythonStatementFunc        ctermfg=5 cterm=bold,italic
+"}}}
+
+" Julia {{{
+hi juliaFunction ctermfg=3    cterm=italic
+hi juliaConditional ctermfg=2 cterm=bold
+
+" }}}
+
 " HTML {{{
 hi htmlTagName              ctermfg=4
 hi htmlTag                  ctermfg=4

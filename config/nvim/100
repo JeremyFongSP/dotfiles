@@ -1,0 +1,21 @@
+Installing plugins (17/18)
+[================= ]
+
+- SimpylFold: Already installed
+- vimwiki: Already installed
+- deoplete-jedi: Already installed
+- python-syntax: Already installed
+- deoplete.nvim: Already installed
+- vim-commentary: Already installed
+- nerdtree: Already installed
+- nvim-completion-manager: Already installed
+- vim-surround: Already installed
+- neomake: Already installed
++ LanguageClient-neovim: remote: Compressing objects: 100% (1413/1413), done.        
+- auto-pairs: Already installed
+- vim-lua: Already installed
+- julia-vim: Already installed
+- deoplete-clangx: Already installed
+- ctrlp.vim: Already installed
+- vimtex: Already installed
+- vim-cpp-enhanced-highlight: Already installed

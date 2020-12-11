@@ -1,0 +1,5 @@
+#!/bin/bash
+
+current_container=$(i3-msg -t get_tree | json_reformat | grep -10 '"focused": true' | grep '"id":' | sed 's/[^0-9]*//g')
+
+echo $current_container >| ~/.current_container

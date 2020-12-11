@@ -1,0 +1,4 @@
+#!/bin/bash
+
+wallpaper="$1"
+wal --vte -b 282A36 -i ~/Pictures/backgrounds/$wallpaper.jpg

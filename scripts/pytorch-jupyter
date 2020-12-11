@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Set the terminal env and directory in the alias (.zshrc)
+
+set -u
+
+tmux new -d -s jupyter_notebook "source activate pytorch;
+cd ~/Projects/MyProjects/Pytorch/;
+jupyter notebook"
+

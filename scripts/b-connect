@@ -1,0 +1,68 @@
+#!/bin/zsh
+
+MAC_ADDR="17:C9:6B:C8:E6:22"
+SUCCESS=false
+ICON=~/.icons/bluetooth-icon.png
+COUNT=1
+
+set -u
+
+function notify {
+    notify-send Bluetooth-Earset -i $ICON "$@"
+}
+
+function is_connected {
+    b_connected=$(bluetoothctl info $MAC_ADDR | awk '/Connected/ {print $2}')
+    if [ $b_connected = 'yes' ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function connect_bt {
+    if (! is_connected); then
+        echo -e 'power on\nconnect 17:C9:6B:C8:E6:22\n' | bluetoothctl
+        notify "Connecting... ($COUNT)"
+        sleep 5
+        if (is_connected); then
+            notify "Connect Success!"
+            SUCCESS=true
+        else
+            notify "Unsuccessful Connection, trying again"
+        fi
+    else
+        echo -e 'disconnect 17:C9:6B:C8:E6:22\n' | bluetoothctl
+        notify "Disconnecting... ($COUNT)"
+        sleep 5
+        if (is_connected); then
+            notify "Unsuccessful Disconnection, trying again"
+        else
+            notify "Disconnect Success!"
+            SUCCESS=true
+        fi
+    fi
+}
+
+function debug {
+    echo quit
+    echo -e 'disconnect 17:C9:6B:C8:E6:22\n' | bluetoothctl
+    sleep 5
+    echo quit
+}
+
+while [[ $SUCCESS = false ]]
+do
+    connect_bt
+    (( COUNT=$COUNT+1 ))
+    if [[ $COUNT > 3 ]]; then
+        notify "Attempting Debugging..."
+        debug
+    fi
+    if [[ $COUNT > 4 ]]; then
+        notify "Could not connect, try manually reseting"
+        break
+    fi
+done
+echo quit
+exit

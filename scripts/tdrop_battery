@@ -1,0 +1,16 @@
+#!/bin/bash
+
+xoffset=1350
+yoffset=50
+width=800
+height=500
+
+batt_string=$(acpi -V | awk -F' ' '/Battery 0/ {$1="";$2="";print}')
+
+if [ ! -f ~/.config/polybar/.battery_state ]; then
+    echo 1 > ~/.config/polybar/.battery_state;
+    tdrop -a -w $width -h $height -x $xoffset -y $yoffset -f "-hold -name batt_status -e sh -c 'echo \"$batt_string\n\" && echo enter password for powertop && sudo powertop'" urxvt &>/dev/null;
+else
+    rm ~/.config/polybar/.battery_state;
+    pkill -f batt_status;
+fi

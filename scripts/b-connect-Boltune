@@ -1,0 +1,84 @@
+#!/bin/zsh
+
+MAC_ADDR="20:07:06:11:C9:A6"
+SUCCESS=false
+ICON=~/.icons/elenapan/linebit/logout1.png
+COUNT=1
+
+set -u
+
+function notify {
+    notify-send --hint=string:x-dunst-stack-tag:BT -i $ICON "$@"
+}
+
+function is_connected {
+    b_connected=$(bluetoothctl info $MAC_ADDR | awk '/Connected/ {print $2}')
+    if [ $b_connected = 'yes' ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function notify_connect () {
+    number="$@"
+    for wait in $number
+    do
+        notify "· Connecting ·"
+        sleep 1
+        notify "·  Connecting  ·"
+        sleep 1
+        notify "·   Connecting   ·"
+        sleep 1
+        notify "·    Connecting    ·"
+        sleep 1
+    done
+}
+
+function notify_disconnect () {
+    number="$@"
+    for wait in $number
+    do
+        notify "· Disconnecting ·"
+        sleep 1
+        notify "·  Disconnecting  ·"
+        sleep 1
+        notify "·   Disconnecting   ·"
+        sleep 1
+        notify "·    Disconnecting    ·"
+        sleep 1
+    done
+}
+function connect_bt {
+    if (! is_connected); then
+        echo -e 'power on\nconnect 20:07:06:11:C9:A6\n' | bluetoothctl
+        notify_connect 2
+        if (is_connected); then
+            notify "Connection Success!"
+            SUCCESS=true
+        else
+            notify "Connection Unsuccessful"
+        fi
+    else
+        echo -e 'disconnect 20:07:06:11:C9:A6\n' | bluetoothctl
+        notify_disconnect 2
+        if (is_connected); then
+            notify "Disconnection Unsuccessful"
+        else
+            notify "Disconnection Success!"
+            SUCCESS=true
+        fi
+    fi
+}
+
+function debug {
+    echo quit
+    echo -e 'disconnect 20:07:06:11:C9:A6\n' | bluetoothctl
+    sleep 5
+    echo quit
+}
+
+connect_bt
+(( COUNT=$COUNT+1 ))
+echo quit
+exit

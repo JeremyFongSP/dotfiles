@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# gets the number of desktop windows open in the desktop with the matching name
+
+# ws_name='1 '
+ws_name="1'"
+# ws_name='6 '
+
+# finds the workspace names of those opened | cuts them according to "" and removes the 
+# clutter by only printing the names | adds line numbers to each starting at 0 | 
+# finds the one with the specified name | cuts to only give the desktop id number
+ws_id=$(xprop -notype -root _NET_DESKTOP_NAMES | awk -F\" '{for(i=2;i<=NF;i+=2) print $i}' | nl -v 0 | awk "/$ws_name/" | cut -c 6)
+
+# searches for all desktop windows currently opened | counts the total
+ws_num=$(xdotool search --all --desktop $ws_id "" 2>/dev/null | wc -l)
+
+# if no windows are opened, set the workspace
+# each terminal get snapped to their respective placeholder, see i3wm on layouts
+# exits the terminal when completed. Exit only works if started with source
+# eg: . .ws1  OR  source .ws1
+# this is automatically called when opening the first workspace
+if [ $ws_num == 0 ]; then
+    i3-msg "workspace $ws_name; append_layout /home/jeremy/.i3/workspace-julia.json"
+    urxvt -hold -name nvim -e sh -c "source activate pytorch; nvim" &
+    urxvt -hold -name julia -e sh -c "julia" &
+    # urxvt -hold -name matplotlib &
+fi
+exit
