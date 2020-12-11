@@ -6,18 +6,18 @@ Xft.autohint:  false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-XTerm*background:        #ff0000
-XTerm*foreground:        #d8d8d8
-XTerm*pointerColor:      #1ABB9B
-XTerm*faceName:          Fixed
-XTerm*faceSize:          11
-XTerm*reverseVideo:      on
-XTerm*selectToClipboard: true
+/* XTerm*background:        #ff0000 */
+/* XTerm*foreground:        #d8d8d8 */
+/* XTerm*pointerColor:      #1ABB9B */
+/* XTerm*faceName:          Fixed */
+/* XTerm*faceSize:          11 */
+/* XTerm*reverseVideo:      on */
+/* XTerm*selectToClipboard: true */
 
-!Ephemerald theme
-*background: #323F4E
+!Modified Ephemerald theme
+/* *background: #282A36 */
 *foreground: #F8F8F2
-!*cursor:     #F8F8F2
+*cursorColor:	#C574DD
 *color0:     #3D4C5F
 *color1:     #F48FB1
 *color2:     #A1EFD3
@@ -34,6 +34,28 @@ XTerm*selectToClipboard: true
 *color13:    #985EFF
 *color14:    #24D1E7
 *color15:    #E5E5E5
+
+!Elenapan xresource colors
+*background:	#1D1F28
+/* *foreground:	#FDFDFD */
+/* *cursorColor:	#C574DD */
+/* *color0:	#282A36 */
+/* *color1:	#F37F97 */
+/* *color2:	#5ADECD */
+/* *color3:	#F2A272 */
+/* *color4:	#8897F4 */
+/* *color5:	#C574DD */
+/* *color6:	#79E6F3 */
+/* *color7:	#FDFDFD */
+/* *color8:	#414458 */
+/* *color9:	#FF4971 */
+/* *color10:	#18E3C8 */
+/* *color11:	#FF8037 */
+/* *color12:	#556FFF */
+/* *color13:	#B043D1 */
+/* *color14:	#3FDCEE */
+/* *color15:	#BEBEC1 */
+
 
 !*background:    #282A36
 !*foreground:                      #282A36
@@ -98,7 +120,7 @@ Xcursor.size:                     0
 URxvt.depth:	32
 !URxvt.font:	xft:Inconsolata-g:pixelsize=13
 !URxvt.font:	xft:Iosevka Custom:pixelsize=18
-URxvt.font:	xft:monospace:size=14,xft:Inconsolata Nerd Font Mono :size=20,xft:DejaVu Sans:size=14
+URxvt.font:	xft:monospace:size=12,xft:Inconsolata Nerd Font Mono :size=18,xft:DejaVu Sans:size=14
 !,xft:unifont:size=20
 !URxvt.font:	xft:monospace:size=14,xft:M+ 1mn:size=16:minspace=False
 !URxvt.font:     xft:Droid Sans Mono for Powerline:size=11
@@ -120,7 +142,7 @@ URxvt.scrollBar:	false
 URxvt.letterSpace:	1
 !URxvt.fading:	0
 !URxvt.transparent:	true
-URxvt.internalBorder: 14
+URxvt.internalBorder: 36
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
 ! URxvt*inheritPixmap:            true
@@ -142,7 +164,7 @@ URxvt.keysym.Control-Up:          \033[1;5A
 URxvt.keysym.Shift-Control-Up:    \033[1;6A
 URxvt.keysym.Control-Down:        \033[1;5B
 URxvt.keysym.Shift-Control-Down:  \033[1;6B
-URxvt.perl-ext-common:             matcher,url-select,keyboard-select,clipboard
+URxvt.perl-ext-common: matcher,url-select,keyboard-select,clipboard,font-size,searchable-scrollback
 ! URxvt.keysym.M-C-c:               perl:clipboard:copy
 ! URxvt.keysym.M-v:                 perl:clipboard:paste
 ! URxvt.keysym.M-C-v:               perl:clipboard:paste_escaped
@@ -223,7 +245,7 @@ URxvt*colorUL:                    #AA0000
 ! URxvt*transient-for:              windowid
 ! URxvt*override-redirect:          boolean
 ! URxvt*hold:                       boolean
-! URxvt*externalBorder:             number
+! URxvt*externalBorder:             color
 ! URxvt*internalBorder:             number
 ! URxvt*borderLess:                 true
 ! URxvt*lineSpace:                  number
@@ -267,13 +289,14 @@ URxvt*matcher.button:        	1
 ! URxvt*tab-fg:                     colour
 ! URxvt*tabbar-bg:                  colour
 ! URxvt*tabbar-fg:                  colour
-URxvt*url-launcher:             /usr/bin/xdg-open
+! URxvt*url-launcher:             /usr/bin/xdg-open
 URxvt*url-select.launcher:	/usr/bin/xdg-open
 URxvt*url-select.underline:	true
 URxvt*keysym.M-u:		perl:url-select:select_next
 URxvt*keysym.M-Escape:		perl:keyboard-select:activate
 URxvt*keysym.M-c:		perl:clipboard:copy
 URxvt*keysym.M-v:		perl:clipboard:paste
+URxvt*keysym.M-f:		perl:searchable-scrollback:start
 
 ! The Terminus font uses the following X-names:
 ! -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1

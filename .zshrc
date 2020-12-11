@@ -1,8 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+# Django Reach Dev
+export DJANGO_SETTINGS_MODULE=reach_website.settings.development
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -161,34 +166,70 @@ cont(){
 
 eval "$(fasd --init auto)"
 
-# awkward with dvorak, no solution yet
 # bindkey -v
 export EDITOR=nvim
 export BROWSER=firefox
-export PYTHONPATH=/bin/python
+export PYTHONPATH="/bin/python"
+export PYTHON="/bin/python"
+export JULIA="/usr/bin/julia"
 
 # Allows backspacing in python shell
 export TERM=xterm
 
 alias v="nvim"
 alias p="python"
+alias .f="nvim ~/.fix"
+alias .3="nvim ~/.3"
+alias .p="nvim ~/.prog"
+alias .l="nvim ~/.l"
 alias xr="xrdb ~/.Xresources"
 alias calc="galculator"
-alias xkb="~/.scripts_custom/xkb"
+alias xkb="~/.scripts_custom/xkb.sh"
 alias sudo='sudo '
 alias ls="lsd"
+alias l="lsd"
+alias brightness="~/.scripts_custom/set_brightness"
 alias pdf="evince"
+alias epub="calibre"
+alias vb="virtualbox"
+alias ss="gnumeric"
 alias vpn-connect="nordvpn connect"
 alias vpn-disconnect="nordvpn disconnect"
-alias rsync-send="~/.scripts_custom/rsync_send_aws"
-alias rsync-pull="~/.scripts_custom/rsync_pull_aws"
-alias rsync-update="~/.scripts_custom/rsync_update_aws"
-alias aws-pull="python ~/.scripts_custom/awspull.py"
-alias aws-connect="python ~/.scripts_custom/awsconnect.py"
-alias aws-send="python ~/.scripts_custom/awssend.py"
-alias aws-start="python ~/.scripts_custom/awsstart.py"
-alias aws-stop="python ~/.scripts_custom/awsstop.py"
-alias aws-stats="python ~/.scripts_custom/awsstatus.py"
+# alias rsync-send="~/.scripts_custom/rsync_send_aws"
+# alias rsync-pull="~/.scripts_custom/rsync_pull_aws"
+# alias rsync-update="~/.scripts_custom/rsync_update_aws"
+# alias aws-pull="python ~/.scripts_custom/awspull.py"
+# alias aws-connect="python ~/.scripts_custom/awsconnect.py"
+# alias aws-send="python ~/.scripts_custom/awssend.py"
+# alias aws-start="python ~/.scripts_custom/awsstart.py"
+# alias aws-stop="python ~/.scripts_custom/awsstop.py"
+# alias aws-stats="python ~/.scripts_custom/awsstatus.py"
+alias tmp="nvim ~/.tmp_notes.txt"
+alias filespace="du -sh ./*"
+alias fs="du -sh ./*"
+alias connect-phone="p ~/.scripts_custom/connect-phone.py"
+alias sa="source activate"
+alias pytorch-ws="cd ~/Projects/MyProjects/Pytorch;
+                  source activate pytorch;
+                  echo 'Starting Jupyter Notebook in tmux'
+                  ~/.scripts_custom/pytorch-jupyter"
+alias saz='function _saz(){ z "$1"; sa "$1";};_saz'
+alias j="julia"
+alias connect-HTB="sudo openvpn ~/Projects/MyProjects/RE/ppkib-startingpoint.ovpn"
+alias jn="jupyter notebook --ip=0.0.0.0 --port=8080"
+alias draw="gromit-mpx"
+alias screenshot="rofi-screenshot"
+alias cp="cp -i"
+alias zshrc="nvim ~/.zshrc"
+alias h="history"
+alias pws='nvim ~/Documents/.important/pws'
+alias ff='firefox'
+alias wb='mysql-workbench'
+alias polyconf='v ~/.config/polybar/config'
+alias dunstrc='v ~/.config/dunst/dunstrc'
+alias view='viewnior'
+alias lockconf='v ~/.scripts_custom/lockscreen-fancy'
+alias cat='~/.scripts_custom/cat.sh'
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 ## plugins, and themes. Aliases can be placed here, though oh-my-zsh
 ## users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -279,3 +320,9 @@ alias aws-stats="python ~/.scripts_custom/awsstatus.py"
 ## lxterminal doesnt detect diff between backspace and ctrl + backspace
 ##bindkey "^?" backward-kill-word
 #
+
+export PF_COL1=6 # Fields
+# export PF_COL2=0 # Specs
+export PF_COL3=5 # Title
+~/.scripts_custom/bunnyfetch
+# ~/.scripts_custom/panes
