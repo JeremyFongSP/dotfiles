@@ -1,0 +1,6 @@
+{
+  "diagnostic.displayByAle": true,
+  "python.pythonPath": "python3",
+  "python.jediPath": "/usr/lib/python3.8/site-packages",
+  "coc.preferences.formatOnSaveFiletypes": ["dart"]
+}

@@ -17,7 +17,7 @@ let g:colors_name = "lena"
 hi Normal              ctermfg=7
 hi Cursor              ctermfg=7     ctermbg=1
 hi CursorLine          ctermbg=0     cterm=NONE
-hi MatchParen          ctermfg=7     ctermbg=NONE  cterm=underline
+hi MatchParen          ctermfg=7     ctermbg=5  cterm=underline,bold
 hi Pmenu               ctermfg=15    ctermbg=0
 hi PmenuThumb          ctermbg=7
 hi PmenuSBar           ctermbg=8
@@ -93,6 +93,8 @@ hi Method          ctermfg=1
 hi! link Error     ErrorMsg
 hi BadWhitespace   ctermfg=1
 hi dFunction       ctermfg=11 cterm=italic
+hi IndentGuidesOdd ctermbg=8
+hi IndentGuidesEven ctermbg=15
 
 "}}}
 " Python {{{
@@ -110,7 +112,94 @@ hi pythonStatementFunc        ctermfg=5 cterm=bold,italic
 " Julia {{{
 hi juliaFunction ctermfg=3    cterm=italic
 hi juliaConditional ctermfg=2 cterm=bold
+" }}}
 
+" Dart {{{
+" break continue
+hi dartBranch          ctermfg=3 cterm=bold
+" \k\+
+hi dartUserLabelRef    ctermfg=2
+" default
+hi dartLabel           ctermfg=2
+" same as branch
+hi dartUserLabel       ctermfg=3cterm=bold
+" if else switch
+hi dartConditional     ctermfg=3 cterm=bold
+" do while for
+hi dartRepeat          ctermfg=3 cterm=bold
+" throw rethrow try on catch finally
+hi dartExceptions      ctermfg=1 cterm=italic
+" assert
+hi dartAssert          ctermfg=1 cterm=italic
+" static abstract final const factory late
+hi dartStorageClass    ctermfg=13 cterm=italic
+" extends with implements
+hi dartClassDecl       ctermfg=12
+" true false
+hi dartBoolean         ctermfg=13
+" between \" or \'
+hi dartString          ctermfg=1 cterm=bold
+" between \" or \' but raw string
+hi dartRawString       ctermfg=1 cterm=bold
+" 3x \" or 3x \'
+hi dartMultilineString ctermfg=1 cterm=bold
+" 3x \" or 3x \' but raw string
+hi dartRawMultilineString ctermfg=1 cterm=bold
+" only digit
+hi dartNumber          ctermfg=10
+" return
+hi dartStatement       ctermfg=3 cterm=bold
+" =, +, -, >, ?, <, /, ||, &&, etc
+hi dartOperator        ctermfg=5
+" between /* */
+hi dartComment         ctermfg=8 cterm=bold
+" after //
+hi dartLineComment     ctermfg=8 cterm=bold
+" after ///
+hi dartLineDocComment  ctermfg=8 cterm=bold
+" after #!
+hi dartShebangLine     ctermfg=8 cterm=bold
+" null
+hi dartConstant        ctermfg=13
+" TODO FIXME XXX
+hi dartTodo            ctermfg=11 ctermbg=NONE cterm=bold,underline
+" get set operator call external async await yield sync native covariant
+" required
+hi dartKeyword         ctermfg=6
+" between \" and containing $ (variables inside string)
+hi dartInterpolation   ctermfg=3
+" between []
+hi dartDocLink         ctermfg=1
+" characters that start with \ (I think)
+hi dartSpecialChar     ctermfg=13
+" after import or export, library, part of, part
+hi dartLibrary         ctermfg=6 cterm=bold
+" uri
+hi dartUri             ctermfg=1
+" show hide deferred as
+hi dartCombinator      ctermfg=6
+" @ eg @override
+hi dartMetadata        ctermfg=1 cterm=italic
+" comparator
+hi dartSdkTypedef      ctermfg=12
+" this super class typedef enum mixin extension
+hi dartTypedef         ctermfg=12
+" AbstractClassInstantiationError, ArgumentError, AssertionError, etc
+hi dartSdkException    ctermfg=1 cterm=bold
+" BidirectionalIterator, Comparable, DateTime, Duration, Expando, Function,
+" Invocation, Iterable, Iterator, List, Map, Match, OBject, PAttern, RegExp,
+" RuneIterator, Runes, Set, StackTrace, Stopwatch, String, Stringbuffer,
+" StringSink, Symbol, Type, bool, int, double, num
+hi dartSdkClass        ctermfg=13
+" void var dynamic
+hi dartCoreType        ctermfg=13
+" types defined by user whether starts by _$ or not, upper case char followed
+" by any number of letter/numbers
+hi dartUserType        ctermfg=2
+" same as darttypedef (?)
+hi dartType            ctermfg=2
+" functions
+hi dartFunction        ctermfg=6 cterm=bold
 " }}}
 
 " HTML {{{

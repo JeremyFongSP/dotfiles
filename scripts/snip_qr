@@ -1,0 +1,18 @@
+#!/bin/bash
+
+FILE=/tmp/screenshot_clip.png
+
+if [ -f "$FILE" ]; then
+    echo "Please close previous screenshot and try again"
+else
+    rofi-screenshot -c;
+
+    while [ ! -f "$FILE" ]
+    do
+        echo "waiting for screenshot..."
+        sleep 1
+    done
+
+    python /home/jeremy/.scripts_custom/read_qr.py
+
+fi

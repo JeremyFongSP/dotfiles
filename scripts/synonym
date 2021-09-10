@@ -1,0 +1,29 @@
+#!/bin/bash
+
+print_help(){
+    echo "Usage:"
+    echo "    ./synonym [language] [text]"
+    echo "Use abbr for language"
+    echo " "
+    echo "Supported languages:"
+    echo "en, fr, cs, el, es, da, de, hu, it, no, pl, pt, ro, ru, sk"
+    echo "If no language is provided, returns english synonyms"
+}
+
+if [[ $# -eq 1 ]]; then
+    synonym $1 | xclip -selection clipboard
+elif [[ $# -eq 2 ]]; then
+    synonym -l $1 $2 | xclip -selection clipboard
+else
+    print_help
+    exit
+fi
+
+xclip -selection clipboard -o
+    # xclip -selection clipboard -o
+# elif [[ $# -eq 2 ]]; then
+    # trans -brief -t $language "$text" | xclip -selection clipboard
+    # xclip -selection clipboard -o
+# else
+    # print_help
+# fi

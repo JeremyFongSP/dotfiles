@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Provide a word as argument (add -b for brief definition)"
+    exit 1
+elif [ $# -eq 1 ]; then
+    :
+elif [ $2 == -b ]; then
+    BRIEF=true
+else
+    echo "Only takes 1 argument for word (add -b for brief definition)"
+    exit 1
+fi
+
+WORD=$1
+
+# curl dict://dict.org/d:$WORD | awk '/$WORD/{flag=1;next}/. /{flag=0}flag'
+if [ $BRIEF ]; then
+    curl -v dict://dict.org/d:$WORD 2>&1 | awk '/151/{flag=1;next} flag{print; if(/^\s*$/ || /^\./) exit}'
+else
+    echo "================================================================"
+    echo " "
+    echo "            START OF DEFINITION FOR WORD: $WORD"
+    echo " "
+    echo "================================================================"
+    echo " "
+    curl -v dict://dict.org/d:$WORD 2>&1 | awk '/151/{flag=1;next}/250/{flag=0}flag'
+fi

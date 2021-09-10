@@ -139,7 +139,7 @@ font-0 = Bitstream Vera Sans:style=bold:size=11;5
 ;font-0 = terminus:size=11;3
 ;font-1 = M+ 1mn:pixelsize=26;7
 font-1 = FontAwesome:pixelsize=12;4
-font-2 = "Iosevka:size=15;4"
+;font-2 = "Iosevka:size=15;4"
 ;font-3 = Inconsolata Nerd Font Mono:size=26;4
 font-3 = FontAwesome:pixelsize=10;3
 ;font-3 = "Bitstream Vera Sans:style=Roman:size=15;4"
@@ -151,7 +151,7 @@ modules-left = i3 i3-mode
 ;scratchpad ranger htop spotify
 modules-center = spotify
 ;i3 title
-modules-right = disk wireless-network battery date powermenu
+modules-right = disk wireless-network vpn-nordvpn-status battery date powermenu
 
 ;tray-detached = false
 ;tray-offset-x = 0
@@ -447,6 +447,8 @@ interval = 5.0
 ;label-connected = %{A1:~/.scripts_custom/tdrop_wireless:}%signal%%{A}
 label-connected = %{A1:i3-scratchpad -d700x600 -abr -p-20,-70 -wtuo +transparent -mb nmtui:}%signal%%{A}
 
+;exec-if = ~/.config/polybar/scripts/vpn-nordvpn-status.sh
+
 
 format-connected = <label-connected>
 ;format-connected = <ramp-signal> <label-connected>
@@ -475,24 +477,19 @@ format-disconnected-prefix-background = ${colors.trans-bg}
 format-disconnected-overline =${colors.overline-color}
 format-disconnected-padding = 1
 
-;ramp-signal-0 = ▁
-;ramp-signal-1 = ▂
-;ramp-signal-2 = ▃
-;ramp-signal-3 = ▄
-;ramp-signal-4 = ▅
-;ramp-signal-5 = ▆
-;ramp-signal-6 = ▇
-;ramp-signal-7 = █
-;;ramp-signal-foreground = #7e52c6
-;ramp-signal-0-foreground = ${colors.adapta-red}
-;ramp-signal-1-foreground = ${colors.adapta-red}
-;ramp-signal-2-foreground = ${colors.adapta-yellow}
-;ramp-signal-3-foreground = ${colors.adapta-yellow}
-;ramp-signal-4-foreground = ${colors.adapta-green}
-;ramp-signal-5-foreground = ${colors.adapta-lightgreen}
-;ramp-signal-6-foreground = ${colors.foreground}
-;ramp-signal-7-foreground = ${colors.foreground}
 
+################################################################################
+
+[module/vpn-nordvpn-status]
+type = custom/script
+exec = ~/.config/polybar/scripts/vpn-nordvpn-status.sh
+interval = 10
+
+format-prefix = " "
+format-overline = ${colors.overline-color}
+format-background = ${colors.trans-bg}
+format-foreground = ${colors.foreground}
+format-padding = 3
 
 ################################################################################
 
@@ -564,7 +561,7 @@ label-focused-padding = 3
 ;label-occupied-padding = 3
 
 ;label-visible = 
-label-visible = "%{T1}%icon%"
+label-visible = "%{T1}%name%"
 label-visible-background = ${colors.trans-bg}
 ;label-visible-foreground = ${colors.foreground}
 ;label-visible-foreground = ${xrdb:color10}

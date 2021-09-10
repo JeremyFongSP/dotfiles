@@ -1,0 +1,38 @@
+#!/bin/bash
+
+print_help(){
+    echo "Usage:"
+    echo "    ./translate_to [language] [text]"
+    echo "If no arguments provided, it assumes and translates to english"
+    echo "If multiple translation required, omit [text] argument"
+}
+
+# if no arguments are given, just plain translate to english (active)
+if [[ $# -eq 0 ]]; then
+    trans -brief
+    exit
+else
+    language=$1
+    # if 1st argument is help, print help text
+    if [ $language = "help" ]; then
+        print_help
+        exit
+    fi
+
+    # if only one argument is given, translate to language (active)
+    if [[ $# -eq 1 ]]; then
+        trans -brief -t $language
+
+    # if two arguments are given, translate to language (single)
+    elif [[ $# -eq 2 ]]; then
+        text=$2
+        # translate and put in clipboard
+        trans -brief -t $language "$text" | xclip -selection clipboard
+        # output clipboard to terminal
+        xclip -selection clipboard -o
+
+    # otherwise just print help
+    else
+        print_help
+    fi
+fi
